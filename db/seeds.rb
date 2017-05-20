@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Seeds: start"
+
+puts "Create users"
+100.times do
+  Client.create!(
+    email: Faker::Internet.email,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    phone: Faker::PhoneNumber.subscriber_number(9)
+  )
+end
+
+puts "Create users likes"
+clients = Client.all
+clients.each do |client|
+  50.times do
+    client.likes.create!(
+      content: Faker::Lorem.sentence
+    )
+  end
+end
+
+puts "Seeds: completed"
