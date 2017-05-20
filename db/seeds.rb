@@ -21,11 +21,37 @@ end
 puts "Create users likes"
 clients = Client.all
 clients.each do |client|
-  50.times do
+  15..25.times do
     client.likes.create!(
       content: Faker::Lorem.sentence
     )
   end
 end
+
+puts "Add important likes"
+important = SmarterCSV.process(Rails.root + "public/dictionary.csv")
+puts important
+important.each do |imp|
+  ImportantLike.create!(
+    content: imp[:fanpage],
+    fin: imp[:fin],
+    mat: imp[:doj],
+    gro: imp[:grow],
+    hip: imp[:hipo]
+  )
+end
+
+puts "Assign important likes to clients"
+
+important_links = ImportantLike.all
+clients.each do |client|
+  ((2..10).to_a).sample.times do
+    like = important_links.sample
+    client.likes.create!(
+      content: like.content
+    )
+  end
+end
+
 
 puts "Seeds: completed"
