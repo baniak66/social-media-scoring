@@ -1,0 +1,50 @@
+clients
+id                | integer
+name              | string
+last_name         | string
+email             | string | index
+telephone_number  | string
+has_many :likes
+has_many :hashtags
+has_many :schools
+has_many :workplaces
+
+likes
+id | integer
+names_list | string | array :true, default: []        # http://stackoverflow.com/questions/23340222/how-to-save-array-to-database-in-rails
+score | integer
+category_id | integer
+client_id | integer
+
+belongs_to :category
+belongs_to :client
+
+hashtags
+id | integer
+names_list | string | array :true, default: []       # http://stackoverflow.com/questions/23340222/how-to-save-array-to-database-in-rails
+score | integer
+category_id | integer
+client_id | integer
+
+belongs_to :category
+belongs_to :client
+
+schools
+id | integer
+name | string
+score | integer
+client_id | integer
+
+has_one :client
+
+workplaces
+id | integer
+name | string
+score | integer
+client_id | integer
+
+has_one :client
+
+categories
+id | integer
+name | string
