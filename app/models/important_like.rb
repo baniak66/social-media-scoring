@@ -1,0 +1,2 @@
+class ImportantLike < ApplicationRecord
+end
