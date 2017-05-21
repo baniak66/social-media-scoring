@@ -26,8 +26,10 @@ class ClientsController < ApplicationController
     uploaded_io = params[:file]
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
-    end
 
+    end
+    Rails.application.load_seed
+    redirect_to all_path
   end
 
 end

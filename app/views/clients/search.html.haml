@@ -21,7 +21,7 @@
           %h4
             Finanse: #{@client.score("fin")}
           %h4
-            Dojżałość: #{@client.score("mat")}
+            Dojrzałość: #{@client.score("mat")}
           %h4
             Rozwój: #{@client.score("gro")}
           %h4
@@ -47,4 +47,4 @@
           %td=like[:hip]
 
     =link_to "Wróć do listy", all_path, class: 'btn btn-danger'
-    =link_to "Nowe wyszykiwanie", root_path, class: 'btn btn-danger'
+    =link_to "Nowe wyszukiwanie", root_path, class: 'btn btn-danger'

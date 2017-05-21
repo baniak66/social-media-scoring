@@ -8,15 +8,15 @@
 
 puts "Seeds: start"
 
-puts "Create users"
-100.times do
-  Client.create!(
-    email: Faker::Internet.email,
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    phone: Faker::PhoneNumber.subscriber_number(9)
-  )
-end
+# puts "Create users"
+# 100.times do
+#   Client.create!(
+#     email: Faker::Internet.email,
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     phone: Faker::PhoneNumber.subscriber_number(9)
+#   )
+# end
 
 puts "Create users likes"
 clients = Client.all
