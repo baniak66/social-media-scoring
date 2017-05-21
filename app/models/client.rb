@@ -38,6 +38,15 @@ class Client < ApplicationRecord
     likes
   end
 
+  def final_score
+    final = []
+    types = %w(fin mat gro hip)
+    types.each do |type|
+      final << self.score(type)
+    end
+    final.reduce(:+)
+  end
+
   def full_name
     "#{self.first_name} #{self.last_name}"
   end

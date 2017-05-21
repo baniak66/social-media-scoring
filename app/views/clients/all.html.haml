@@ -6,9 +6,10 @@
     %thead
       %th Imię i nazwisko
       %th Finanse
-      %th Dojżałość
+      %th Dojrzałość
       %th Rozwój
       %th Hipoteka
+      %th Ocena ogólna
     -@clients.each do |client|
       %tbody
         %td=link_to "#{client.full_name}", search_path(search: client.email)
@@ -19,6 +20,7 @@
           #{client.score("hip")}
           -if client.score("hip") >= 5
             =link_to 'Wyślij ofertę hipoteczną', "#", class: "btn btn-warning btn-sm"
+        %td=client.final_score
   = will_paginate @clients, renderer: BootstrapPagination::Rails
   %hr
   =link_to "Wróć", root_path, class: 'btn btn-danger'

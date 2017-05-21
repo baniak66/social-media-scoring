@@ -28,6 +28,8 @@
             Hipoteka: #{@client.score("hip")}
             -if @client.score("hip") >= 5
               =link_to 'Wyślij ofertę hipoteczną', "#", class: "btn btn-warning"
+          %h3
+            Ocena ogólna: #{@client.final_score}
     %hr
     %h4
       Szczegółowa ocena:
