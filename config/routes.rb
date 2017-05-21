@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/start', to: 'clients#start', as: 'start'
   get '/search', to: 'clients#search', as: 'search'
   get '/all', to: 'clients#all', as: 'all'
+  post '/upload', to: 'clients#upload', as: 'upload'
 end
