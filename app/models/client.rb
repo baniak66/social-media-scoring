@@ -27,5 +27,20 @@ class Client < ApplicationRecord
     scores.reduce(:+)
   end
 
+  def list_likes
+    likes = []
+    check_likes.each do |like|
+      ImportantLike.where(content: like).each do |l|
+        hash = {content: l.content, fin: l.fin, mat: l.mat, gro: l.gro, hip: l.hip}
+        likes.push(hash)
+      end
+    end
+    likes
+  end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 end
 

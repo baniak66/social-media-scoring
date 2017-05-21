@@ -1,0 +1,47 @@
+.container
+  .container
+    %h3
+      =@client.full_name
+    %hr
+    %h4
+      Nr telefonu: #{@client.phone}
+    %h4
+      Adres email: #{@client.email}
+    %hr
+    %h4
+      Liczba znalezionych polubień: #{@client.likes.all.count}
+    %h4
+      Liczba polubień ocenianych przez bank: #{@client.check_likes.count}
+    %hr
+    .panel-group
+      .panel.panel-primary
+        .panel-heading
+          %h3 Ocena społecznościowa klienta
+        .panel-body
+          %h4
+            Finanse: #{@client.score("fin")}
+          %h4
+            Dojżałość: #{@client.score("mat")}
+          %h4
+            Rozwój: #{@client.score("gro")}
+          %h4
+            Hipoteka: #{@client.score("hip")}
+            -if @client.score("hip") >= 5
+              =link_to 'Wyślij ofertę hipoteczną', "#", class: "btn btn-warning"
+    %hr
+    %h4
+      Szczegółowa ocena:
+    %table.table
+      %thead
+        %th Polubiono
+        %th Finanse
+        %th Dojżałość
+        %th Rozwój
+        %th Hipoteka
+      -@likes.each do |like|
+        %tbody
+          %td=like[:content]
+          %td=like[:fin]
+          %td=like[:mat]
+          %td=like[:gro]
+          %td=like[:hip]
