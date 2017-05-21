@@ -1,0 +1,23 @@
+.container
+  %h3 Wszyscy klienci
+
+  = will_paginate @clients, renderer: BootstrapPagination::Rails
+  %table.table
+    %thead
+      %th Imię i nazwisko
+      %th Finanse
+      %th Dojżałość
+      %th Rozwój
+      %th Hipoteka
+    -@clients.each do |client|
+      %tbody
+        %td=client.full_name
+        %td=client.score("fin")
+        %td=client.score("mat")
+        %td=client.score("gro")
+        %td
+          #{client.score("hip")}
+          -if client.score("hip") >= 5
+            =link_to 'Wyślij ofertę hipoteczną', "#", class: "btn btn-warning btn-sm"
+
+  = will_paginate @clients, renderer: BootstrapPagination::Rails

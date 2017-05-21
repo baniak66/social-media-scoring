@@ -5,3 +5,5 @@
     = form_tag(search_path, :method => "get", id: "search-form", class: "form-group") do
       = text_field_tag :search, params[:search], placeholder: "adres email", class: 'form-control'
       = submit_tag "Szukaj", class: 'btn btn-default'
+
+    =link_to 'Pokaż wszystkich klientów', all_path, class: 'btn btn-primary btn-block'

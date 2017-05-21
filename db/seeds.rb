@@ -30,7 +30,6 @@ end
 
 puts "Add important likes"
 important = SmarterCSV.process(Rails.root + "public/dictionary.csv")
-puts important
 important.each do |imp|
   ImportantLike.create!(
     content: imp[:fanpage],
