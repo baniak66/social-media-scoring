@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
-  has_many :likes
+  has_many :likes, dependent: :destroy
+
 
   def check_likes
     clients_likes = []
@@ -49,6 +50,10 @@ class Client < ApplicationRecord
 
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def self.delete_all
+    Client.destroy_all
   end
 
 end
