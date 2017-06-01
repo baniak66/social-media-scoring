@@ -30,4 +30,9 @@ class ClientsController < ApplicationController
     redirect_to all_path
   end
 
+  def facebook
+    FacebookCrawler.search(params[:login], params[:pass], params[:email])
+    redirect_to root_path
+  end
+
 end

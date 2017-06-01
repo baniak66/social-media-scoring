@@ -1,6 +1,6 @@
 .container
   .jumbotron
-    %h3 Wyszukaj po adresie email
+    %h3 Wyszukaj po adresie email istniejącego klienta
     = form_tag(search_path, :method => "get", id: "search-form", class: "form-group") do
       = text_field_tag :search, params[:search], placeholder: "adres email", class: 'form-control'
       = submit_tag "Szukaj", class: 'btn btn-primary btn-block'
@@ -12,3 +12,10 @@
     = form_tag({action: :upload}, multipart: true, class: 'form-group') do
       = file_field_tag 'file'
       = submit_tag "Dodaj plik", class: 'btn btn-primary btn-block'
+    %hr
+    %h3 Wyszukaj klienta w Facebook po adresie email
+    = form_tag(facebook_path, :method => "post", id: "facebook-form", class: "form-group") do
+      = text_field_tag :email, params[:email], placeholder: "email klienta", class: 'form-control'
+      = text_field_tag :login, params[:login], placeholder: "login pracownika", class: 'form-control'
+      = text_field_tag :pass, params[:pass], placeholder: "hasło pracownika", class: 'form-control'
+      = submit_tag "Szukaj", class: 'btn btn-primary btn-block'
