@@ -27,6 +27,9 @@ class FacebookCrawler
     browser.fill_in('q', :with => email)
     browser.find('._585_').click
 
+    # Set client name and create record with email & name
+    client_name = browser.find('._2yez').text
+    client = Client.create!(email: email, first_name: client_name)
     # Click on result person
     browser.find('._2yez').click
 
@@ -48,8 +51,6 @@ class FacebookCrawler
       puts "loaded #{$after} likes"
     end
 
-    # Create client
-    client = Client.create!(email: email)
     # Create clinets likes objects
     (browser.all '.fcb').each do |like|
       client.likes.create!(content: like.text)
