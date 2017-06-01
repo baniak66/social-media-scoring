@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/all', to: 'clients#all', as: 'all'
   post '/upload', to: 'clients#upload', as: 'upload'
   post '/facebook', to: 'clients#facebook', as: 'facebook'
+  post '/delete', to: 'clients#delete', as: 'delete'
 end

@@ -7,11 +7,13 @@
     %hr
     %h3 Pokaż wszystkich klientów
     =link_to 'Pokaż wszystkich klientów', all_path, class: 'btn btn-primary btn-block'
+
     %hr
     %h3 Dodaj plik csv
     = form_tag({action: :upload}, multipart: true, class: 'form-group') do
       = file_field_tag 'file'
       = submit_tag "Dodaj plik", class: 'btn btn-primary btn-block'
+
     %hr
     %h3 Wyszukaj klienta w Facebook po adresie email
     = form_tag(facebook_path, :method => "post", id: "facebook-form", class: "form-group") do
@@ -19,3 +21,4 @@
       = text_field_tag :login, params[:login], placeholder: "login pracownika", class: 'form-control'
       = text_field_tag :pass, params[:pass], placeholder: "hasło pracownika", class: 'form-control'
       = submit_tag "Szukaj", class: 'btn btn-primary btn-block'
+

@@ -5,10 +5,10 @@
   %table.table
     %thead
       %th Imię i nazwisko
-      %th Finanse
-      %th Dojrzałość
-      %th Rozwój
-      %th Hipoteka
+      %th Świadomość finansowa
+      %th Dojrzałość emocjonalna
+      %th Rozwój osobisty
+      %th Zainteresowanie Hipoteką
       %th Ocena ogólna
     -@clients.each do |client|
       %tbody
@@ -24,3 +24,5 @@
   = will_paginate @clients, renderer: BootstrapPagination::Rails
   %hr
   =link_to "Wróć", root_path, class: 'btn btn-danger'
+  =link_to 'Usuń wszystkich klientów', delete_path, method: :destroy, class: 'btn btn-danger'
+
